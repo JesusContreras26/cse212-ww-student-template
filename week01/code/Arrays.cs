@@ -12,8 +12,16 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
-
-        return []; // replace this return statement with your own
+        // 1. I created an array of type doubles with the size of the legth parameter.
+        double[] result = new double[length];
+        // 2. I used a loop to iterate from the variable i to length -1.
+        for (int i = 0; i < length; i++)
+        {   
+            // 3. In each iteration, multiply the number by i + 1 and assign it to the result array at index i.
+            result[i] = number * (i + 1);
+        }
+        // 4. Return the result of the array.
+        return result; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +37,16 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+        // 1. I created a variable called dataSize and assign it the value of the length of the list of the data 
+        // that I am getting from the parameter of the fuction.
+        int dataSize = data.Count;
+        // 2. I created a variable called rotateAmount and assign it the value of the amount given by the user % size.
+        int rotateAmount = amount % dataSize;
+        // 3. I Created a variable called dataToAdd and assign it the value of data.GetRange(dataSize - rotateAmount, rotateAmount).
+        List<int> dataToAdd = data.GetRange(dataSize - rotateAmount, rotateAmount);
+        // 4. I removed the last rotateAmount elements from data using data.RemoveRange(dataSize - rotateAmount, rotateAmount).
+        data.RemoveRange(dataSize - rotateAmount, rotateAmount);
+        // 5. I inserted the elements from dataToAdd variable at the beginning of data using the method data.InsertRange(0, temp).
+        data.InsertRange(0, dataToAdd);
     }
 }
