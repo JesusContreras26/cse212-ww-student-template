@@ -7,7 +7,7 @@ public class PriorityQueueTests
 {
     [TestMethod]
     // Scenario: Create a queue and add information to it in order to test the priority queue function  
-    // Expected Result: It should return the last value insert as the first value dequeue
+    // Expected Result: It should return the last value insert as the first value dequeue with the highest priority
     // Defect(s) Found: It wasn't dequeue the value from the queue at the end because the removeAt method was never called
     public void TestPriorityQueue_1()
     {
