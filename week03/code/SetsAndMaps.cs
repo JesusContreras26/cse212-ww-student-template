@@ -22,7 +22,21 @@ public static class SetsAndMaps
     public static string[] FindPairs(string[] words)
     {
         // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+        var pairs = new HashSet<string>();
+        var wordSet = new HashSet<string>(words);
+        foreach (var word in words)
+        {
+            var reverseWord = word[1].ToString() + word[0].ToString();
+            if (wordSet.Contains(reverseWord) && word != reverseWord)
+            {
+                if (!pairs.Contains(reverseWord + " & " + word) && !pairs.Contains(word + " & " + reverseWord))
+                {
+                    pairs.Add(reverseWord + " & " + word);
+                }
+            }
+        }
+
+        return pairs.ToArray();
     }
 
     /// <summary>
@@ -43,6 +57,15 @@ public static class SetsAndMaps
         {
             var fields = line.Split(",");
             // TODO Problem 2 - ADD YOUR CODE HERE
+            var degree = fields[3].Trim();
+            if (!degrees.ContainsKey(degree))
+            {
+                degrees.Add(degree, 1);
+            }
+            else
+            {
+                degrees[degree]++;
+            }
         }
 
         return degrees;
@@ -67,7 +90,38 @@ public static class SetsAndMaps
     public static bool IsAnagram(string word1, string word2)
     {
         // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        var anagram = new Dictionary<char, int>();
+        var word1Lower = word1.ToLower().Replace(" ", "");
+        var word2Lower = word2.ToLower().Replace(" ", "");  
+        if (word1Lower.Length != word2Lower.Length)
+        {
+            return false;
+        }
+        foreach (var letter in word1Lower) {
+            if (anagram.ContainsKey(letter))
+            {
+                anagram[letter]++;
+            }
+            else
+            {
+                anagram[letter] = 1;
+            }
+        }
+        foreach (var letter in word2Lower)
+        {
+            if (!anagram.ContainsKey(letter))
+            {
+                return false;
+            }
+            anagram[letter]--;
+            if (anagram[letter] < 0)
+            {
+                return false;   
+            }
+        }
+        
+        return true;
+
     }
 
     /// <summary>

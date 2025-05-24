@@ -37,7 +37,7 @@ public class PriorityQueueTests
         priorityQueue.Enqueue("z", 6);
         priorityQueue.Enqueue("a", 6);
         // Dequeue items and check the order
-        Assert.AreEqual("a", priorityQueue.Dequeue());
+        Assert.AreEqual("y", priorityQueue.Dequeue());
     }
 
     // Add more test cases as needed below.

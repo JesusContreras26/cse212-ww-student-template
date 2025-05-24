@@ -33,6 +33,24 @@ public class Maze
     public void MoveLeft()
     {
         // FILL IN CODE
+        // Check if the current position is in the maze map
+        if (!_mazeMap.ContainsKey((_currX, _currY)))
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        // Get the directions for the current position
+        bool[] directions = _mazeMap[(_currX, _currY)];
+        // Check if the left direction is valid
+        if (directions[0])
+        {
+            // Move left by decrementing the x-coordinate
+            _currX--;
+        }
+        else
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
     }
 
     /// <summary>
@@ -42,6 +60,21 @@ public class Maze
     public void MoveRight()
     {
         // FILL IN CODE
+        if (!_mazeMap.ContainsKey((_currX, _currY)))
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        bool[] directions = _mazeMap[(_currX, _currY)];
+        if (directions[1])
+        {
+            // Move right by incrementing the x-coordinate
+            _currX++;
+        }
+        else
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        
     }
 
     /// <summary>
@@ -51,6 +84,19 @@ public class Maze
     public void MoveUp()
     {
         // FILL IN CODE
+        if (!_mazeMap.ContainsKey((_currX, _currY)))
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        bool[] directions = _mazeMap[(_currX, _currY)];
+        if (directions[2])
+        {
+            _currY--;
+        }
+        else
+        { 
+            throw new InvalidOperationException("Can't go that way!");
+        }
     }
 
     /// <summary>
@@ -60,6 +106,19 @@ public class Maze
     public void MoveDown()
     {
         // FILL IN CODE
+        if (!_mazeMap.ContainsKey((_currX, _currY)))
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+        bool[] directions = _mazeMap[(_currX, _currY)];
+        if (directions[3])
+        {
+            _currY++;
+        }
+        else
+        { 
+            throw new InvalidOperationException("Can't go that way!");
+        }
     }
 
     public string GetStatus()
